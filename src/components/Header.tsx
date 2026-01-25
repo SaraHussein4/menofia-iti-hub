@@ -2,17 +2,20 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import itiLogo from "@/assets/iti-logo.svg";
-
-const navLinks = [
-  { name: "الرئيسية", path: "/" },
-  { name: "من نحن", path: "/about" },
-  { name: "فريق العمل", path: "/staff" },
-  { name: "تواصل معنا", path: "/contact" },
-];
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { t, isRTL } = useLanguage();
+
+  const navLinks = [
+    { name: t("nav.home"), path: "/" },
+    { name: t("nav.about"), path: "/about" },
+    { name: t("nav.staff"), path: "/staff" },
+    { name: t("nav.contact"), path: "/contact" },
+  ];
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -24,13 +27,13 @@ const Header = () => {
           <Link to="/" className="flex items-center gap-3">
             <img src={itiLogo} alt="ITI Logo" className="h-14" />
             <div className="hidden sm:block">
-              <p className="text-sm font-semibold text-secondary">معهد تكنولوجيا المعلومات</p>
-              <p className="text-xs text-primary font-bold">فرع المنوفية</p>
+              <p className="text-sm font-semibold text-secondary">{t("header.iti")}</p>
+              <p className="text-xs text-primary font-bold">{t("header.branch")}</p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8" dir="rtl">
+          <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -44,19 +47,22 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-secondary hover:text-primary transition-colors"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+          {/* Language Switcher & Mobile Menu */}
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher />
+            <button
+              className="md:hidden p-2 text-secondary hover:text-primary transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-border" dir="rtl">
+          <nav className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link

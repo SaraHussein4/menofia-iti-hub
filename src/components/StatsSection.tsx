@@ -1,17 +1,20 @@
 import { useEffect, useState, useRef } from "react";
 import { Users, GraduationCap, Building2, Award } from "lucide-react";
-
-const stats = [
-  { icon: Users, value: 500, suffix: "+", label: "متدرب سنوياً" },
-  { icon: GraduationCap, value: 95, suffix: "%", label: "نسبة التوظيف" },
-  { icon: Building2, value: 50, suffix: "+", label: "شركة شريكة" },
-  { icon: Award, value: 15, suffix: "+", label: "سنة خبرة" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const StatsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [counts, setCounts] = useState(stats.map(() => 0));
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
+
+  const stats = [
+    { icon: Users, value: 500, suffix: "+", label: t("stats.trainees") },
+    { icon: GraduationCap, value: 95, suffix: "%", label: t("stats.employment") },
+    { icon: Building2, value: 50, suffix: "+", label: t("stats.partners") },
+    { icon: Award, value: 15, suffix: "+", label: t("stats.experience") },
+  ];
+
+  const [counts, setCounts] = useState(stats.map(() => 0));
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -57,7 +60,7 @@ const StatsSection = () => {
   return (
     <section ref={sectionRef} className="py-16 iti-gradient">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6" dir="rtl">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}

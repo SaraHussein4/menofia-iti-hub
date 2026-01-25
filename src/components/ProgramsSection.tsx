@@ -1,50 +1,53 @@
 import { Code, Database, Cloud, Smartphone, Brain, Shield } from "lucide-react";
-
-const programs = [
-  {
-    icon: Code,
-    title: "تطوير الويب",
-    description: "تعلم أحدث تقنيات تطوير مواقع وتطبيقات الويب باستخدام React, Node.js, و المزيد",
-  },
-  {
-    icon: Smartphone,
-    title: "تطوير تطبيقات الموبايل",
-    description: "بناء تطبيقات iOS و Android باستخدام أحدث الأدوات والتقنيات",
-  },
-  {
-    icon: Database,
-    title: "علوم البيانات",
-    description: "تحليل البيانات والتعلم الآلي واستخراج رؤى قيمة من البيانات الضخمة",
-  },
-  {
-    icon: Cloud,
-    title: "الحوسبة السحابية",
-    description: "إتقان خدمات AWS, Azure, و Google Cloud لبناء بنى تحتية قوية",
-  },
-  {
-    icon: Brain,
-    title: "الذكاء الاصطناعي",
-    description: "تطوير حلول ذكية باستخدام تقنيات الذكاء الاصطناعي والتعلم العميق",
-  },
-  {
-    icon: Shield,
-    title: "الأمن السيبراني",
-    description: "حماية الأنظمة والشبكات من التهديدات الأمنية والهجمات الإلكترونية",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ProgramsSection = () => {
+  const { t } = useLanguage();
+
+  const programs = [
+    {
+      icon: Code,
+      title: t("programs.web"),
+      description: t("programs.web.desc"),
+    },
+    {
+      icon: Smartphone,
+      title: t("programs.mobile"),
+      description: t("programs.mobile.desc"),
+    },
+    {
+      icon: Database,
+      title: t("programs.data"),
+      description: t("programs.data.desc"),
+    },
+    {
+      icon: Cloud,
+      title: t("programs.cloud"),
+      description: t("programs.cloud.desc"),
+    },
+    {
+      icon: Brain,
+      title: t("programs.ai"),
+      description: t("programs.ai.desc"),
+    },
+    {
+      icon: Shield,
+      title: t("programs.security"),
+      description: t("programs.security.desc"),
+    },
+  ];
+
   return (
     <section className="py-20 bg-muted">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12" dir="rtl">
-          <h2 className="section-title mx-auto">البرامج التدريبية</h2>
+        <div className="text-center mb-12">
+          <h2 className="section-title mx-auto">{t("programs.title")}</h2>
           <p className="text-muted-foreground mt-6 max-w-2xl mx-auto text-lg">
-            نقدم برامج تدريبية متخصصة تواكب أحدث التقنيات وتلبي احتياجات سوق العمل المحلي والعالمي
+            {t("programs.desc")}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" dir="rtl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {programs.map((program, index) => (
             <div
               key={index}
