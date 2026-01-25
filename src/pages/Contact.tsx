@@ -2,9 +2,11 @@ import { useState } from "react";
 import Layout from "@/components/Layout";
 import { MapPin, Phone, Mail, Clock, Send, Facebook, Linkedin, Youtube } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Contact = () => {
   const { toast } = useToast();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,8 +29,8 @@ const Contact = () => {
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     toast({
-      title: "تم إرسال رسالتك بنجاح!",
-      description: "سنتواصل معك في أقرب وقت ممكن.",
+      title: t("contactPage.successTitle"),
+      description: t("contactPage.successDesc"),
     });
 
     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
@@ -40,12 +42,12 @@ const Contact = () => {
       {/* Hero Section */}
       <section className="iti-gradient py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center" dir="rtl">
+          <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              تواصل معنا
+              {t("contactPage.title")}
             </h1>
             <p className="text-xl text-white/90 leading-relaxed">
-              نحن هنا للإجابة على استفساراتك ومساعدتك في رحلتك المهنية
+              {t("contactPage.subtitle")}
             </p>
           </div>
         </div>
@@ -54,15 +56,15 @@ const Contact = () => {
       {/* Contact Content */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12" dir="rtl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div className="bg-card p-8 rounded-2xl shadow-lg border border-border">
-              <h2 className="text-2xl font-bold text-secondary mb-6">أرسل لنا رسالة</h2>
+              <h2 className="text-2xl font-bold text-secondary mb-6">{t("contactPage.sendMessage")}</h2>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium mb-2">الاسم الكامل</label>
+                    <label className="block text-sm font-medium mb-2">{t("contactPage.fullName")}</label>
                     <input
                       type="text"
                       name="name"
@@ -70,11 +72,11 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                      placeholder="أدخل اسمك"
+                      placeholder={t("contactPage.namePlaceholder")}
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">البريد الإلكتروني</label>
+                    <label className="block text-sm font-medium mb-2">{t("contactPage.email")}</label>
                     <input
                       type="email"
                       name="email"
@@ -90,7 +92,7 @@ const Contact = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium mb-2">رقم الهاتف</label>
+                    <label className="block text-sm font-medium mb-2">{t("contactPage.phone")}</label>
                     <input
                       type="tel"
                       name="phone"
@@ -102,7 +104,7 @@ const Contact = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">الموضوع</label>
+                    <label className="block text-sm font-medium mb-2">{t("contactPage.subject")}</label>
                     <select
                       name="subject"
                       value={formData.subject}
@@ -110,17 +112,17 @@ const Contact = () => {
                       required
                       className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
                     >
-                      <option value="">اختر الموضوع</option>
-                      <option value="admission">الاستفسار عن القبول</option>
-                      <option value="programs">البرامج التدريبية</option>
-                      <option value="partnership">الشراكات</option>
-                      <option value="other">أخرى</option>
+                      <option value="">{t("contactPage.selectSubject")}</option>
+                      <option value="admission">{t("contactPage.admission")}</option>
+                      <option value="programs">{t("contactPage.programsOption")}</option>
+                      <option value="partnership">{t("contactPage.partnership")}</option>
+                      <option value="other">{t("contactPage.other")}</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">رسالتك</label>
+                  <label className="block text-sm font-medium mb-2">{t("contactPage.message")}</label>
                   <textarea
                     name="message"
                     value={formData.message}
@@ -128,7 +130,7 @@ const Contact = () => {
                     required
                     rows={5}
                     className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
-                    placeholder="اكتب رسالتك هنا..."
+                    placeholder={t("contactPage.messagePlaceholder")}
                   />
                 </div>
 
@@ -138,10 +140,10 @@ const Contact = () => {
                   className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-70"
                 >
                   {isSubmitting ? (
-                    "جاري الإرسال..."
+                    t("contactPage.sending")
                   ) : (
                     <>
-                      إرسال الرسالة
+                      {t("contactPage.send")}
                       <Send className="h-5 w-5" />
                     </>
                   )}
@@ -152,17 +154,17 @@ const Contact = () => {
             {/* Contact Info */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-2xl font-bold text-secondary mb-6">معلومات التواصل</h2>
+                <h2 className="text-2xl font-bold text-secondary mb-6">{t("contactPage.info")}</h2>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4 p-4 bg-muted rounded-lg">
                     <div className="w-12 h-12 rounded-lg iti-gradient flex items-center justify-center shrink-0">
                       <MapPin className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-secondary mb-1">العنوان</h3>
+                      <h3 className="font-semibold text-secondary mb-1">{t("contactPage.address")}</h3>
                       <p className="text-muted-foreground">
-                        شارع الجمهورية، شبين الكوم<br />
-                        محافظة المنوفية، مصر
+                        {t("contactPage.addressLine1")}<br />
+                        {t("contactPage.addressLine2")}
                       </p>
                     </div>
                   </div>
@@ -172,7 +174,7 @@ const Contact = () => {
                       <Phone className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-secondary mb-1">الهاتف</h3>
+                      <h3 className="font-semibold text-secondary mb-1">{t("contactPage.phoneLabel")}</h3>
                       <p className="text-muted-foreground" dir="ltr">
                         +20 48 123 4567<br />
                         +20 48 765 4321
@@ -185,7 +187,7 @@ const Contact = () => {
                       <Mail className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-secondary mb-1">البريد الإلكتروني</h3>
+                      <h3 className="font-semibold text-secondary mb-1">{t("contactPage.emailLabel")}</h3>
                       <p className="text-muted-foreground">
                         menofia@iti.gov.eg<br />
                         info.menofia@iti.gov.eg
@@ -198,10 +200,10 @@ const Contact = () => {
                       <Clock className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-secondary mb-1">ساعات العمل</h3>
+                      <h3 className="font-semibold text-secondary mb-1">{t("contactPage.workHours")}</h3>
                       <p className="text-muted-foreground">
-                        الأحد - الخميس: 9:00 ص - 5:00 م<br />
-                        الجمعة - السبت: مغلق
+                        {t("contactPage.workDays")}<br />
+                        {t("contactPage.closed")}
                       </p>
                     </div>
                   </div>
@@ -210,7 +212,7 @@ const Contact = () => {
 
               {/* Social Links */}
               <div>
-                <h3 className="font-semibold text-secondary mb-4">تابعنا على</h3>
+                <h3 className="font-semibold text-secondary mb-4">{t("contactPage.followUs")}</h3>
                 <div className="flex gap-3">
                   <a
                     href="https://facebook.com"
@@ -255,7 +257,7 @@ const Contact = () => {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="موقع معهد تكنولوجيا المعلومات - فرع المنوفية"
+              title="ITI Menofia Location"
             />
           </div>
         </div>

@@ -1,36 +1,40 @@
 import { useEffect, useState } from "react";
-import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImage1 from "@/assets/hero-image-1.jpg";
 import heroImage2 from "@/assets/hero-image-2.jpg";
-
-const slides = [
-  {
-    image: heroImage1,
-    title: "معهد تكنولوجيا المعلومات",
-    subtitle: "فرع المنوفية",
-    description: "نبني المستقبل الرقمي لمصر من خلال تأهيل أفضل الكوادر البشرية في مجال تكنولوجيا المعلومات",
-  },
-  {
-    image: heroImage2,
-    title: "قوة رقمية جديدة",
-    subtitle: "DIGITOPIA",
-    description: "برامج تدريبية متميزة تواكب أحدث التقنيات العالمية وتلبي احتياجات سوق العمل",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { t, isRTL } = useLanguage();
+
+  const slides = [
+    {
+      image: heroImage1,
+      title: t("hero.slide1.title"),
+      subtitle: t("hero.slide1.subtitle"),
+      description: t("hero.slide1.desc"),
+    },
+    {
+      image: heroImage2,
+      title: t("hero.slide2.title"),
+      subtitle: t("hero.slide2.subtitle"),
+      description: t("hero.slide2.desc"),
+    },
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [slides.length]);
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+
+  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
   return (
     <section className="relative h-[600px] md:h-[700px] overflow-hidden">
@@ -54,7 +58,7 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 h-full flex items-center">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl text-center mx-auto animate-fade-in" dir="rtl">
+          <div className="max-w-3xl text-center mx-auto animate-fade-in">
             <span className="inline-block bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold mb-4">
               {slides[currentSlide].subtitle}
             </span>
@@ -69,14 +73,14 @@ const HeroSection = () => {
                 to="/about"
                 className="btn-primary inline-flex items-center justify-center gap-2"
               >
-                اكتشف المزيد
-                <ArrowLeft className="h-5 w-5" />
+                {t("hero.discover")}
+                <ArrowIcon className="h-5 w-5" />
               </Link>
               <Link
                 to="/contact"
                 className="btn-outline border-white text-white hover:bg-white hover:text-secondary inline-flex items-center justify-center"
               >
-                تواصل معنا
+                {t("hero.contact")}
               </Link>
             </div>
           </div>

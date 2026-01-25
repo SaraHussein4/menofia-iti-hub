@@ -1,31 +1,32 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, CheckCircle } from "lucide-react";
-
-const features = [
-  "برامج تدريبية معتمدة دولياً",
-  "مدربين ذوي خبرة عالية",
-  "شراكات مع كبرى الشركات",
-  "فرص توظيف مضمونة",
-  "بيئة تعليمية متطورة",
-  "مناهج محدثة باستمرار",
-];
+import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const AboutPreview = () => {
+  const { t, isRTL } = useLanguage();
+  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
+
+  const features = [
+    t("about.feature1"),
+    t("about.feature2"),
+    t("about.feature3"),
+    t("about.feature4"),
+    t("about.feature5"),
+    t("about.feature6"),
+  ];
+
   return (
     <section className="py-20">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" dir="rtl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div>
-            <h2 className="section-title mb-6">عن معهد تكنولوجيا المعلومات</h2>
+            <h2 className="section-title mb-6">{t("about.title")}</h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-6 mt-8">
-              معهد تكنولوجيا المعلومات هو المعهد الرائد في مصر والشرق الأوسط في مجال 
-              تدريب وتأهيل الكوادر البشرية في تكنولوجيا المعلومات والاتصالات. يعمل المعهد 
-              تحت مظلة وزارة الاتصالات وتكنولوجيا المعلومات منذ أكثر من 15 عاماً.
+              {t("about.desc1")}
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              فرع المنوفية هو أحد الفروع المتميزة للمعهد، حيث نقدم برامج تدريبية 
-              متخصصة لشباب محافظة المنوفية والمحافظات المجاورة.
+              {t("about.desc2")}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
@@ -41,8 +42,8 @@ const AboutPreview = () => {
               to="/about"
               className="btn-primary inline-flex items-center gap-2"
             >
-              اقرأ المزيد
-              <ArrowLeft className="h-5 w-5" />
+              {t("about.readMore")}
+              <ArrowIcon className="h-5 w-5" />
             </Link>
           </div>
 
@@ -52,19 +53,19 @@ const AboutPreview = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-card rounded-xl p-6 shadow-lg">
                   <div className="text-4xl font-bold text-primary mb-2">9</div>
-                  <p className="text-muted-foreground">أشهر تدريب مكثف</p>
+                  <p className="text-muted-foreground">{t("about.months")}</p>
                 </div>
                 <div className="bg-card rounded-xl p-6 shadow-lg">
                   <div className="text-4xl font-bold text-primary mb-2">24</div>
-                  <p className="text-muted-foreground">ساعة يومياً دعم</p>
+                  <p className="text-muted-foreground">{t("about.support")}</p>
                 </div>
                 <div className="bg-card rounded-xl p-6 shadow-lg">
                   <div className="text-4xl font-bold text-primary mb-2">100%</div>
-                  <p className="text-muted-foreground">مجاني بالكامل</p>
+                  <p className="text-muted-foreground">{t("about.free")}</p>
                 </div>
                 <div className="bg-card rounded-xl p-6 shadow-lg">
                   <div className="text-4xl font-bold text-primary mb-2">+50</div>
-                  <p className="text-muted-foreground">شركة توظيف</p>
+                  <p className="text-muted-foreground">{t("about.companies")}</p>
                 </div>
               </div>
             </div>
