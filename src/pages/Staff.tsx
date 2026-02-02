@@ -1,90 +1,92 @@
 import Layout from "@/components/Layout";
-import { Mail, Linkedin } from "lucide-react";
+import { Mail } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import omniaNourImg from "@/assets/omnia-nour.png";
+import mohamedElshafeiImg from "@/assets/mohamed-elshafei.png";
 
 const leadership = [
   {
-    nameAr: "د. أحمد محمد",
-    nameEn: "Dr. Ahmed Mohamed",
+    nameAr: "م. امنية نور",
+    nameEn: "Eng. Omnia Nour",
     roleAr: "مدير الفرع",
     roleEn: "Branch Director",
     departmentAr: "الإدارة",
     departmentEn: "Administration",
-    email: "ahmed.m@iti.gov.eg",
+    image: omniaNourImg,
   },
   {
-    nameAr: "م. سارة أحمد",
-    nameEn: "Eng. Sara Ahmed",
-    roleAr: "نائب مدير الفرع",
-    roleEn: "Deputy Director",
+    nameAr: "م. محمد الشافعي",
+    nameEn: "Eng. Mohamed Elshafei",
+    roleAr: "مدير التدريب",
+    roleEn: "Training Director",
     departmentAr: "الإدارة",
     departmentEn: "Administration",
-    email: "sara.a@iti.gov.eg",
+    image: mohamedElshafeiImg,
   },
 ];
 
 const instructors = [
   {
-    nameAr: "م. محمد حسن",
-    nameEn: "Eng. Mohamed Hassan",
-    roleAr: "مدرب تطوير الويب",
-    roleEn: "Web Development Instructor",
+    nameAr: "م. سارة حسين",
+    nameEn: "Eng. Sara Hussein",
+    roleAr: "مدربة",
+    roleEn: "Instructor",
+    departmentAr: "قسم System Development",
+    departmentEn: "System Development Dept.",
+    specialization: "HTML & CSS, Javascript, ECMA6, HTML5 & CSS3, Angular Framework",
+  },
+  {
+    nameAr: "م. زياد أشرف",
+    nameEn: "Eng. Ziad Ashraf",
+    roleAr: "مدرب",
+    roleEn: "Instructor",
+    departmentAr: "قسم Open Source",
+    departmentEn: "Open Source Dept.",
+    specialization: "Operating System, Python, OOP Using Python",
+  },
+  {
+    nameAr: "م. عمرو أحمد",
+    nameEn: "Eng. Amr Ahmed",
+    roleAr: "مدرب",
+    roleEn: "Instructor",
+    departmentAr: "قسم Open Source",
+    departmentEn: "Open Source Dept.",
+    specialization: "Apache Web Server, Laravel",
+  },
+  {
+    nameAr: "م. آيات عادي",
+    nameEn: "Eng. Ayat Adi",
+    roleAr: "مدربة",
+    roleEn: "Instructor",
+    departmentAr: "قسم Open Source",
+    departmentEn: "Open Source Dept.",
+    specialization: "Version Control, PHP",
+  },
+  {
+    nameAr: "م. رحاب هشام",
+    nameEn: "Eng. Rehab Hesham",
+    roleAr: "مدربة",
+    roleEn: "Instructor",
+    departmentAr: "قسم System Development",
+    departmentEn: "System Development Dept.",
+    specialization: "Node.js, Windows Form, Version Control, ADO",
+  },
+  {
+    nameAr: "م. سيمون شحاته",
+    nameEn: "Eng. Simon Shehata",
+    roleAr: "مدرب",
+    roleEn: "Instructor",
     departmentAr: "قسم التطوير",
     departmentEn: "Development Dept.",
-    specialization: "React, Node.js, TypeScript",
-  },
-  {
-    nameAr: "م. فاطمة علي",
-    nameEn: "Eng. Fatma Ali",
-    roleAr: "مدربة علوم البيانات",
-    roleEn: "Data Science Instructor",
-    departmentAr: "قسم البيانات",
-    departmentEn: "Data Dept.",
-    specialization: "Python, Machine Learning, AI",
-  },
-  {
-    nameAr: "م. عمر إبراهيم",
-    nameEn: "Eng. Omar Ibrahim",
-    roleAr: "مدرب تطبيقات الموبايل",
-    roleEn: "Mobile Apps Instructor",
-    departmentAr: "قسم الموبايل",
-    departmentEn: "Mobile Dept.",
-    specialization: "Flutter, React Native, iOS",
-  },
-  {
-    nameAr: "م. نورا سمير",
-    nameEn: "Eng. Noura Samir",
-    roleAr: "مدربة الحوسبة السحابية",
-    roleEn: "Cloud Computing Instructor",
-    departmentAr: "قسم البنية التحتية",
-    departmentEn: "Infrastructure Dept.",
-    specialization: "AWS, Azure, DevOps",
-  },
-  {
-    nameAr: "م. خالد محمود",
-    nameEn: "Eng. Khaled Mahmoud",
-    roleAr: "مدرب الأمن السيبراني",
-    roleEn: "Cybersecurity Instructor",
-    departmentAr: "قسم الأمن",
-    departmentEn: "Security Dept.",
-    specialization: "Security, Penetration Testing",
-  },
-  {
-    nameAr: "م. مريم عادل",
-    nameEn: "Eng. Mariam Adel",
-    roleAr: "مدربة واجهات المستخدم",
-    roleEn: "UI/UX Instructor",
-    departmentAr: "قسم التصميم",
-    departmentEn: "Design Dept.",
-    specialization: "UI/UX, Figma, Adobe XD",
+    specialization: "HTML & CSS, Javascript, ECMA6, HTML5 & CSS3, Bootstrap",
   },
 ];
 
 const adminStaff = [
-  { nameAr: "أ. هدى سعيد", nameEn: "Ms. Hoda Said", roleAr: "مسؤولة شؤون المتدربين", roleEn: "Trainee Affairs Officer" },
-  { nameAr: "أ. أحمد فوزي", nameEn: "Mr. Ahmed Fawzy", roleAr: "مسؤول الموارد البشرية", roleEn: "HR Officer" },
-  { nameAr: "أ. منى عبدالله", nameEn: "Ms. Mona Abdullah", roleAr: "مسؤولة العلاقات العامة", roleEn: "PR Officer" },
-  { nameAr: "أ. كريم حسين", nameEn: "Mr. Karim Hussein", roleAr: "مسؤول تقنية المعلومات", roleEn: "IT Officer" },
+  { nameAr: "أ. نبيل عبدالعزيز", nameEn: "Mr. Nabil Abdelaziz" },
+  { nameAr: "أ. أحمد عزمي", nameEn: "Mr. Ahmed Azmy" },
+  { nameAr: "أ. صالح فارس", nameEn: "Mr. Saleh Fares" },
+  { nameAr: "أ. عبدالرحمن صلاح", nameEn: "Mr. Abdelrahman Salah" },
 ];
 
 const Staff = () => {
@@ -124,10 +126,12 @@ const Staff = () => {
                 className="bg-card p-8 rounded-2xl shadow-lg border border-border card-hover"
               >
                 <div className="flex items-start gap-6">
-                  <div className="w-20 h-20 rounded-full iti-gradient flex items-center justify-center shrink-0">
-                    <span className="text-3xl font-bold text-white">
-                      {isAr ? member.nameAr.charAt(2) : member.nameEn.charAt(0)}
-                    </span>
+                  <div className="w-20 h-20 rounded-full overflow-hidden shrink-0">
+                    <img 
+                      src={member.image} 
+                      alt={isAr ? member.nameAr : member.nameEn}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-secondary mb-1">
@@ -136,16 +140,9 @@ const Staff = () => {
                     <p className="text-primary font-semibold mb-2">
                       {isAr ? member.roleAr : member.roleEn}
                     </p>
-                    <p className="text-muted-foreground text-sm mb-3">
+                    <p className="text-muted-foreground text-sm">
                       {isAr ? member.departmentAr : member.departmentEn}
                     </p>
-                    <a
-                      href={`mailto:${member.email}`}
-                      className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      <Mail className="h-4 w-4" />
-                      {member.email}
-                    </a>
                   </div>
                 </div>
               </div>
@@ -227,12 +224,9 @@ const Staff = () => {
                     {isAr ? staff.nameAr.charAt(2) : staff.nameEn.charAt(0)}
                   </span>
                 </div>
-                <h3 className="font-semibold text-secondary text-sm mb-1">
+                <h3 className="font-semibold text-secondary text-sm">
                   {isAr ? staff.nameAr : staff.nameEn}
                 </h3>
-                <p className="text-muted-foreground text-xs">
-                  {isAr ? staff.roleAr : staff.roleEn}
-                </p>
               </div>
             ))}
           </div>
@@ -253,7 +247,7 @@ const Staff = () => {
               href="mailto:careers@iti.gov.eg"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
             >
-              <Linkedin className="h-5 w-5" />
+              <Mail className="h-5 w-5" />
               {t("staffPage.sendCV")}
             </a>
           </div>
