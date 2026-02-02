@@ -54,8 +54,8 @@ const instructors = [
     specialization: "Apache Web Server, Laravel",
   },
   {
-    nameAr: "م. آيات عادي",
-    nameEn: "Eng. Ayat Adi",
+    nameAr: "م. آيات عادل",
+    nameEn: "Eng. Ayaat Adel",
     roleAr: "مدربة",
     roleEn: "Instructor",
     departmentAr: "قسم Open Source",
