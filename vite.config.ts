@@ -5,6 +5,9 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // IMPORTANT: update this if your repository name is different
+  // Example: if the repo is `username/menofia-iti-hub`, base must be `/menofia-iti-hub/`
+  base: "/menofia-iti-hub/",
   server: {
     host: "::",
     port: 8080,
