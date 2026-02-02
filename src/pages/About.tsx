@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import { Target, Eye, Award, Users, BookOpen, Briefcase } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import itiBuilding from "@/assets/iti-menofia-building.jpg";
 
 const About = () => {
   const { t } = useLanguage();
@@ -37,16 +38,24 @@ const About = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="iti-gradient py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              {t("aboutPage.title")}
-            </h1>
-            <p className="text-xl text-white/90 leading-relaxed">
-              {t("aboutPage.subtitle")}
-            </p>
+      {/* Hero Section with Building Image */}
+      <section className="relative h-[400px] md:h-[500px] overflow-hidden">
+        <img
+          src={itiBuilding}
+          alt="ITI Menofia Building"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/50 to-transparent" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                {t("aboutPage.title")}
+              </h1>
+              <p className="text-xl text-white/90 leading-relaxed">
+                {t("aboutPage.subtitle")}
+              </p>
+            </div>
           </div>
         </div>
       </section>

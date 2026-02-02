@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import itiBuilding from "@/assets/iti-menofia-building.jpg";
 import heroImage1 from "@/assets/hero-image-1.jpg";
 import heroImage2 from "@/assets/hero-image-2.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -11,10 +12,16 @@ const HeroSection = () => {
 
   const slides = [
     {
-      image: heroImage1,
+      image: itiBuilding,
       title: t("hero.slide1.title"),
       subtitle: t("hero.slide1.subtitle"),
       description: t("hero.slide1.desc"),
+    },
+    {
+      image: heroImage1,
+      title: t("hero.slide2.title"),
+      subtitle: t("hero.slide2.subtitle"),
+      description: t("hero.slide2.desc"),
     },
     {
       image: heroImage2,
