@@ -176,8 +176,7 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-secondary mb-1">{t("contactPage.phoneLabel")}</h3>
                       <p className="text-muted-foreground" dir="ltr">
-                        +20 48 123 4567<br />
-                        +20 48 765 4321
+                        {t("contactPage.phoneNumber")}
                       </p>
                     </div>
                   </div>
@@ -189,8 +188,7 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-secondary mb-1">{t("contactPage.emailLabel")}</h3>
                       <p className="text-muted-foreground">
-                        menofia@iti.gov.eg<br />
-                        info.menofia@iti.gov.eg
+                        {t("contactPage.emailAddress")}
                       </p>
                     </div>
                   </div>
